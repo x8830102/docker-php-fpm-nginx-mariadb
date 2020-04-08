@@ -19,8 +19,10 @@ services:
           context: ./php7-fpm
           args:
               TIMEZONE: ${TIMEZONE}
+
       volumes:
-          - ${APP_PATH}:/var/www/app
+          - ${APP_PATH}:/var/www/yumau
+          
       environment:
           DB_HOST: db
           DB_PORT: 3306
@@ -38,7 +40,7 @@ services:
           - 'php-fpm'
           - '9000'
       volumes:
-        - ${APP_PATH}:/var/www/app
+        - ${APP_PATH}:/var/www/yumau
         - ./logs/nginx/:/var/log/nginx
       ports:
         - "80:80"
@@ -47,6 +49,15 @@ services:
         - php-fpm
       networks:
         - default
+    phpmyadmin:
+      image: phpmyadmin/phpmyadmin
+      volumes:
+        - "./php7-fpm/conf.d/uploads.ini:/usr/local/etc/php/conf.d/uploads.ini"
+      environment:
+        PMA_HOST: db
+        PMA_PORT: 3306
+      ports:
+        - '8181:80'
 networks:
   default:
     driver: bridge
