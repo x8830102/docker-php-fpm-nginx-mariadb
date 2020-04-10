@@ -1,1 +1,0 @@
-2020/04/07 07:55:26 [error] 10#10: *5 directory index of "/var/www/yumau/public/yumau/" is forbidden, client: 172.19.0.1, server: , request: "GET /yumau/ HTTP/1.1", host: "localhost"

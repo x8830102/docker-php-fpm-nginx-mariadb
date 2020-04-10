@@ -56,24 +56,27 @@
 	define('WWW_DBCONF_HOSTNAME', 'db:3306');
 	define('WWW_DBCONF_USERNAME', 'root');
 	define('WWW_DBCONF_PASSWORD', 'rgn26842');
-    define('WWW_DBCONF_DATABASE', 'yumau');
+	define('WWW_DBCONF_DATABASE', 'yumau');
+
+	define('PANMEDIA_CDN_VERSION', '1.0');
+	define('PANMEDIA_MEMBER_CLIENT_ID','1430598363715949');
 	define('ENVIRONMENT', isset($_SERVER['CI_ENV']) ? $_SERVER['CI_ENV'] : 'development');
 	date_default_timezone_set("Asia/Taipei");
 
 	if(isset($_SERVER['SERVER_NAME']))
 	{
-		if($_SERVER['SERVER_NAME']=='yumau.test')
+		if($_SERVER['SERVER_NAME']=='localhost')
 		{
-			define('WWW_BASE_URL', 'http://yumau.test/');
+			define('WWW_BASE_URL', 'http://localhost/');
 		}
 		else
 		{
-			define('WWW_BASE_URL', 'http://yumau.test/');
+			define('WWW_BASE_URL', 'http://' . $_SERVER['HTTP_HOST'] . '/');
 		}
 	}
 	else
 	{
-		define('WWW_BASE_URL', 'http://yumau.test/');
+		define('WWW_BASE_URL', '');
 	}
     // echo $_SERVER['SERVE/R_NAME'];
     // echo WWW_BASE_URL;
